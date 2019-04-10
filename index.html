@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    Choose a drink customization:<br />
+    <input
+      type="radio"
+      name="logo-select"
+      value="logo-coke"
+      checked
+    />Coke<br />
+    <input type="radio" name="logo-select" value="logo-pepsi" />Pepsi<br />
+    <input type="radio" name="logo-select" value="logo-nova" />Nova<br />
+    <input type="radio" name="logo-select" value="logo-custom" />Custom<br />
+    If custom, upload your own: <br />
+    <input
+      type="file"
+      id="logo"
+      onchange="handleCustomLogoUpload(this.files)"
+    />
+    <a-scene embedded="true">
+      <a-assets>
+        <img id="logo-pepsi" src="static/pepsi.jpg" />
+        <img id="logo-coke" src="static/coke.jpg" />
+        <img id="logo-nova" src="static/nova.PNG" />
+        <img id="logo-custom" />
+      </a-assets>
+
+      <a-cylinder
+        id="drink"
+        radius="0.5"
+        height="1.5"
+        position="0 0.75 -3"
+        material="src: #logo-coke"
+        rotation="0 -90 0"
+        shadow="cast: true"
+      >
+      </a-cylinder>
+
+      <a-entity
+        light="type: directional; castShadow: true;"
+        target="#drink"
+        position="0.781 1.450 -1.339"
+      >
+      </a-entity>
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="4"
+        height="4"
+        color="#7BC8A4"
+        shadow="receive: true"
+      ></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <script src="main.js"></script>
+  </body>
+</html>
